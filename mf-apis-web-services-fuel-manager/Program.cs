@@ -1,6 +1,8 @@
 
 using mf_apis_web_services_fuel_manager.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Text;
+using System.Text.Json.Serialization;
 
 namespace mf_apis_web_services_fuel_manager
 {
@@ -15,7 +17,8 @@ namespace mf_apis_web_services_fuel_manager
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
             );
 
-            builder.Services.AddControllers();
+            builder.Services.AddControllers()
+                .AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();

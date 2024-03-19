@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace mf_apis_web_services_fuel_manager.Models
 {
     [Table("Veiculos")]
-    public class Veiculo
+    public class Veiculo : LinksDtoHATEOS
     {
         [Key]
         public int Id { get; set; }
@@ -19,6 +19,6 @@ namespace mf_apis_web_services_fuel_manager.Models
         [Required]
         public int AnoModelo { get; set; }
 
-        public ICollection<Consumo> Consumos { get; set; }
+        public ICollection<Consumo>? Consumos { get; set; }
     }
 }
